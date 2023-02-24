@@ -1,0 +1,12 @@
+.grid{
+    height: 500px;
+    width: 500px;
+}
+
+.carreau{
+    height: 100px;
+    width: 100px;
+    background-color: bisque;
+    display: inline-block;
+    border: 0 3 3 0.1;
+}
