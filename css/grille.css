@@ -1,0 +1,50 @@
+.grid{
+    height: 500px;
+    width: 500px;
+}
+
+.carreau{
+    height: 100px;
+    width: 100px;
+    background-color: bisque;
+    display: inline-block;
+    border: 0 3 3 0.1;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  .players {
+    display: flex;
+    align-items: center;
+    margin-left: 30%;
+  }
+  
+  .player {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+  }
+  
+  .player img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .player h3 {
+    margin: 0;
+  }
+  
+  .player span {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  
