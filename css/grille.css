@@ -1,14 +1,25 @@
+
+/*Grille des joueurs*/
 .grid{
-    height: 500px;
-    width: 500px;
+  height: 650px;
+  width: 550px;
+  display: inline-block;
+  margin-left: 50px;
+  padding-top: 150px;
 }
 
 .carreau{
-    height: 100px;
-    width: 100px;
-    background-color: bisque;
-    display: inline-block;
-    border: 0 3 3 0.1;
+  height: 50px;
+  width: 50px;
+  background-color: bisque;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+.game{
+  height: 1500px;
+  width: 1300px;
+  justify-content: center;
 }
 
 /* HEADER */
