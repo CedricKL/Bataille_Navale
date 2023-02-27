@@ -12,7 +12,7 @@
     <header>
         <div class="players">
             <div class="player">
-            <img src="img/player1img.png" alt="Player 1">
+            <img src="img/player1.png" alt="Player 1">
             <h3>Player 1</h3>
             <span>Score: 0</span>
             </div>
