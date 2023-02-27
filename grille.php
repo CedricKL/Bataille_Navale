@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="css/grille.css">
     <script src="js/jquery-3.6.3.min.js"></script>
     <script src="js/joueur.js"></script>
-    <script src="navire.js"></script>
+    <script src="js/navire.js"></script>
     <title>Grille</title>
 </head>
-<body class="container">
+<body class="container" onload="creerNavire()">
     <header>
         <div class="players">
             <div class="player">
