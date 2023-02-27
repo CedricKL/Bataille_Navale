@@ -8,6 +8,13 @@
   padding-top: 150px;
 }
 
+.choix{
+  height: 250px;
+  width: 550px;
+  border: 3px solid black;
+  margin-left: 50px;
+}
+
 .carreau{
   height: 50px;
   width: 50px;
