@@ -28,14 +28,14 @@
         <div class="grid">
             <?php 
                 for($i=0;$i<100;$i++){
-                    echo "<div class=\"carreau\"></div>";
+                    echo "<div class=\"carreau\" id=\"c$i\"></div>";
                 } 
             ?>     
         </div>
         <div class="grid">
             <?php 
                 for($i=0;$i<100;$i++){
-                    echo "<div class=\"carreau\"></div>";
+                    echo "<div class=\"carreau\" id=\"c$i\"></div>";
                 } 
             ?>     
         </div>
