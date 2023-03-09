@@ -1,0 +1,219 @@
+/* CORPS DE LA PAGE*/
+
+body {
+    
+    background-color: rgb(237, 223, 194); 
+
+    }
+
+
+/*ENTETE DE PAGE*/
+
+#entete{
+    background-color: rgb(30, 92, 153);
+    text-align: center;
+    padding-top: 2em;
+    margin-bottom: 2em;
+    padding-bottom: 2em;  
+}
+
+#entete h1{
+    color: white;
+    font-family: 'Georgia, serif';
+    font-size: 300%;
+    margin-right: 10em;
+}
+
+#entete h2{
+    color: white;
+    font-family: 'Georgia, serif';
+    text-align: right;
+    font-size: 150%;
+    margin-right: 10em;
+}
+
+
+/*MENU DE NAVIGATION*/
+
+
+#menu{
+    background-color: rgb(30, 92, 153);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    clear: both;
+    position:bottom;
+    font-family: 'Georgia, serif';
+    padding: 1em;
+    padding-bottom: 1em;
+    padding-right:1em;
+    padding-left:1em;
+}
+
+#menu a{
+    font-size: 110%;
+    color: rgb(255, 255, 255);
+    font-family: 'Georgia, serif'; 
+    
+    
+}
+
+
+#menu a:visited{ /* Change la couleur quand on a deja cliqué dessus*/
+    color: rgb(255, 197, 40);
+    text-decoration: none;
+}
+
+/* Petit carré sur le coté. Tout moche 
+#menu a:hover{
+    border-left: 5px solid rgb(255, 197, 40);
+    color: rgb(40, 222, 255);
+}
+*/
+
+
+/*ZONE DE CONTENU*/
+
+#contenu{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 98%;
+    background-color: rgb(30, 92, 153);
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding: 1em;
+    margin-left: 0em;
+    margin-bottom: 3em;
+    margin-top: 3em;
+    border: 5px ;
+    color: rgb(255, 197, 40) groove;
+}
+
+
+                
+
+#acceuil{
+    width: 80%;
+    background-color: rgb(237, 223, 194);
+    padding-right: 1em;
+    line-height: 2em;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Georgia, serif';
+}
+
+#regles1{
+    width: 80%;
+    background-color: rgb(237, 223, 194);
+    padding-right: 1em;
+    line-height: 2em;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Georgia, serif';
+}
+
+
+#jouer1{
+    width: 80%;
+    background-color: rgb(237, 223, 194);
+    padding-right: 1em;
+    line-height: 2em;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Georgia, serif';
+}
+
+#contact1{
+    width: 80%;
+    background-color: rgb(237, 223, 194);
+    padding-right: 1em;
+    line-height: 2em;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Georgia, serif';
+}
+
+#remerciement1 {
+    width: 80%;
+    background-color: rgb(237, 223, 194);
+    padding-right: 1em;
+    line-height: 2em;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Georgia, serif';
+}
+
+
+
+
+
+#statistiques1 {
+    width: 80%;
+    background-color: rgb(237, 223, 194);
+    padding-right: 1em;
+    line-height: 2em;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Georgia, serif';
+}
+
+
+/*PIED DE PAGE*/
+
+
+#footer {
+    background-color: rgb(30, 92, 153);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    clear: both;
+    border-radius: 0em;
+    position: relative;
+    font-family: 'Georgia, serif';
+    padding: 0em;
+    padding-bottom: 0em;
+    padding-right:0em;
+    padding-left:0em;
+    flex-wrap: wrap;
+}
+
+#footer a {
+
+     color: rgb(255, 197, 40);
+     font-size: 100%
+}
+
+#footer a:hover {
+    color: rgb(40, 222, 255);
+
+}
+
+
+
+/*POLICES*/
+
+
+
+#map { 
+ height: 500px ; width: 1200px; 
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

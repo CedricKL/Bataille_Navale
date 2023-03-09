@@ -11,7 +11,7 @@
     <script src="js/navire.js"></script>
     <title>Grille</title>
 </head>
-<body class="container" onload="creerNavire()">
+<body class="container" onload="getPartie()">
     <header>
         <div class="players">
             <div class="player">
@@ -27,6 +27,30 @@
         </div>
     </header>
 
+    <div>
+    <?php 
+    session_start();
+    $_SESSION['id_partie'] = $_GET['partie'];
+    include('./connexion.php');
+    
+    // get positions navires
+    $requete = "SELECT * FROM partie WHERE idPartie = :idPartie";
+        $stmt = $c->prepare($requete);
+        $idPartie = $_SESSION['id_partie'];
+        $stmt->bindParam(':idPartie', $idPartie);
+
+        $stmt->execute();
+
+        // récupération du résultat dans un tableau associatif
+        $tabRes = $stmt->fetch();
+        // Si vous voulez mieux comprendre la structure de données retournée :
+        
+            
+            $grille = json_decode($tabRes['Grillej1']);
+            $_SESSION['grille'] = $grille;
+            $_SESSION['tour'] = $tabRes['tour'];
+    ?>
+    </div>
     <div class="game">
         <div class="grid">
             <?php 
@@ -38,6 +62,7 @@
         <div class="grid">
             <?php 
                 for($i=0;$i<100;$i++){
+                   // if($_SESSION['tour'] ==)
                     echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\" onclick=\"gererClick($i)\"></div>";
                 } 
             ?>     
