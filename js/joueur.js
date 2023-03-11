@@ -7,6 +7,14 @@ function gererClick(id) {
    $("#e"+id).css("background-image", "url(\"img/feu.gif\")");
    $("#e"+id).css("background-size", "contain");
    $("#e"+id).css("background-repeat", "no-repeat");
+
+   $.ajax({
+    url:"enregistrerGrille.php",
+    type:"POST",
+    data: {"id": id}
+  }).done(function() {
+    console.log("Reussi");
+  });
 }
 
 
