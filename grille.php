@@ -42,7 +42,7 @@
     <script src="js/navire.js"></script>
     <title>Grille</title>
 </head>
-<body class="container" onload="getPartie()">
+<body class="container" onload="getPartie();getTour()">
     <header>
         <div class="players">
             <div class="player">
