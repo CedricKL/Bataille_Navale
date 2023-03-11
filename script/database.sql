@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS bataille;
 CREATE DATABASE bataille;
+USE bataille;
 DROP TABLE IF EXISTS joueur, partie, jouer, navire ;
 
 CREATE TABLE joueur 

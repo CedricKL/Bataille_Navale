@@ -1,3 +1,23 @@
+<?php 
+    session_start();
+    $_SESSION['id_partie'] = $_GET['partie'];
+    include('./connexion.php');
+    
+    // get positions navires
+    $requete = "SELECT * FROM partie WHERE idPartie = :idPartie";
+    $stmt = $c->prepare($requete);
+    $idPartie = $_SESSION['id_partie'];
+    $stmt->bindParam(':idPartie', $idPartie);
+
+    $stmt->execute();
+
+    // récupération du résultat dans un tableau associatif
+    $tabRes = $stmt->fetch();
+    // Si vous voulez mieux comprendre la structure de données retournée :
+    $grille = json_decode($tabRes['Grillej1']);
+    $_SESSION['grille'] = $grille;
+    $_SESSION['tour'] = $tabRes['tour'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,28 +48,7 @@
     </header>
 
     <div>
-    <?php 
-    session_start();
-    $_SESSION['id_partie'] = $_GET['partie'];
-    include('./connexion.php');
-    
-    // get positions navires
-    $requete = "SELECT * FROM partie WHERE idPartie = :idPartie";
-        $stmt = $c->prepare($requete);
-        $idPartie = $_SESSION['id_partie'];
-        $stmt->bindParam(':idPartie', $idPartie);
 
-        $stmt->execute();
-
-        // récupération du résultat dans un tableau associatif
-        $tabRes = $stmt->fetch();
-        // Si vous voulez mieux comprendre la structure de données retournée :
-        
-            
-            $grille = json_decode($tabRes['Grillej1']);
-            $_SESSION['grille'] = $grille;
-            $_SESSION['tour'] = $tabRes['tour'];
-    ?>
     </div>
     <div class="game">
         <div class="grid">
@@ -62,12 +61,16 @@
         <div class="grid">
             <?php 
                 for($i=0;$i<100;$i++){
-                   // if($_SESSION['tour'] ==)
-                    echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\" onclick=\"gererClick($i)\"></div>";
+                   if($_SESSION['tour'] == 1){
+                        echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\" onclick=\"gererClick($i)\"></div>";
+                   }else{
+                        echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\"></div>";
+                   }
+                        
                 } 
             ?>     
         </div>
-        <div class="choix">
+        <!-- <div class="choix">
             <?php 
                 for($i=0;$i<40;$i++){
                     if($i % 10 == 0){
@@ -75,7 +78,7 @@
                     }
                 } 
             ?>
-        </div>
+        </div> -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>

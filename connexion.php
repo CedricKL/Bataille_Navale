@@ -1,7 +1,7 @@
 <?php
 	try
 	{
-		//$maCo = new PDO("mysql:host=localhost;dbname=womeni0","womeni","yx08PAhV");
+		//$c = new PDO("mysql:host=localhost;dbname=womeni0","womeni","yx08PAhV");
 		$c = new PDO("mysql:host=localhost;dbname=bataille","root","");
 
 	}
