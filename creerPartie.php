@@ -1,4 +1,6 @@
-<?php 
+<?php
+    session_start() ;  
+    $_SESSION['pseudo'] = "Ced"; 
     include('./connexion.php');
     // include('./end.php');
     require_once('function.php');
@@ -53,7 +55,7 @@
         "87" => 1,
         "88" => 1,
     );
-    $tour = '2';
+    $tour = '1';
     $etat = '1';
     // 1 - demarré 2- En Attente 0-Pas encore commence
     $g1Json = json_encode($grilleJ1);
@@ -62,8 +64,8 @@
     $stmt->bindParam(":grilleJ2",$g2Json);
     $stmt->bindParam(":tour", $tour);
     $stmt->bindParam(":etat", $etat);
-
     $stmt->execute();
+
     $requete = "SELECT * FROM partie ORDER BY idPartie DESC LIMIT 1";
     $stmt = $c->prepare($requete);
     $stmt->execute();
@@ -74,4 +76,13 @@
     //var_dump($tabRes);
     echo $tabRes['idPartie'];
     // header("Location: grille.php?partie=1");
-    exit();
+    $num = 1;
+    $requete = "INSERT INTO jouer(idPartie,pseudo,numJoueur) VALUES(:idPartie, :pseudo, :numJoueur)";
+    $stmt = $c->prepare($requete);
+    $stmt->bindParam(":idPartie",$tabRes['idPartie']);
+    $stmt->bindParam(":pseudo",$_SESSION['pseudo']);
+    $stmt->bindParam(":numJoueur",$num);
+    $stmt->execute();
+
+    $_SESSION['numJoueur'] = 1;
+

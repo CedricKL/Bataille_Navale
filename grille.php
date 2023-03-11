@@ -31,7 +31,7 @@
     <script src="js/navire.js"></script>
     <title>Grille</title>
 </head>
-<body class="container" onload="getPartie()">
+<body class="container" onload="getPartie();getTour();">
     <header>
         <div class="players">
             <div class="player">
@@ -61,7 +61,7 @@
         <div class="grid">
             <?php 
                 for($i=0;$i<100;$i++){
-                   if($_SESSION['tour'] == 1){
+                   if($_SESSION['tour'] == $_SESSION['numJoueur']){
                         echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\" onclick=\"gererClick($i)\"></div>";
                    }else{
                         echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\"></div>";

@@ -44,6 +44,13 @@ function creerNavire(data){
 function getPartie() {
     $.get("http://localhost/Bataille_Navale/getGrille.php", creerNavire);
 }
+
+function tour(data){
+    console.log("tour du joueur "+data);
+}
+function getTour(){
+    $.get("./getTour.php",tour);
+}
     
 function traiterPartie(data) {
 
