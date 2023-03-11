@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    var temps = 5000;
+    var temps = 2000;
 
-    /* setTimeout(() => {
+     setTimeout(() => {
         location.reload();
-    }, temps); */
+    }, temps); 
 })
 
 function creerPartie() {
@@ -22,7 +22,7 @@ function creerPartie() {
 }
 
 function creerNavire(data){
-    //console.log(data);
+    console.log(data);
     let keys = Object.keys(data);
     let values = Object.values(data);
     /* for(let i=2;i<=6;i++){
@@ -38,6 +38,9 @@ function creerNavire(data){
 
         if(values[i] == 2)
         $("#j"+keys[i]).css("background-color","red");
+
+        if(values[i] == 3)
+        $("#j"+keys[i]).css("background-color","brown");
     }
    
 }

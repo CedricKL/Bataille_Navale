@@ -7,6 +7,10 @@
 
     $requete = "INSERT INTO partie(Grillej1, Grillej2, tour, etat) VALUES(:grilleJ1, :grilleJ2, :tour, :etat)";
     $stmt = $c->prepare($requete);
+
+    // Legende Grille
+    // 1 - Position d'un bateau 2- Tiré mais loupé 3-Touché
+
     /* $grilleJ1 = '[
         "3":1,"4":1, "5":1,"6":1,"7":1,"23":1,"34":1,"45":1,"51":1,"52":1,"53":1,"54":1,"55":1,"56":1,"67":1,"84":1,"85":1,"86":1,"87":1,"88":1,
     ]'; */
@@ -55,9 +59,13 @@
         "87" => 1,
         "88" => 1,
     );
+    // Legende Tour
+    // 1 - Joueur 1 2- Joueur 2
     $tour = '1';
-    $etat = '1';
+
+    // Legende Etat
     // 1 - demarré 2- En Attente 0-Pas encore commence
+    $etat = '1';
     $g1Json = json_encode($grilleJ1);
     $g2Json = json_encode($grilleJ2);
     $stmt->bindParam(":grilleJ1",$g1Json);
@@ -84,5 +92,5 @@
     $stmt->bindParam(":numJoueur",$num);
     $stmt->execute();
 
-    $_SESSION['numJoueur'] = 1;
+    $_SESSION['numJoueur'] = '1';
 

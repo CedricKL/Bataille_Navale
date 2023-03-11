@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS joueur, partie, jouer, navire ;
 
 CREATE TABLE joueur 
 (
-    pseudo VARCHAR(30) UNIQUE,
+    pseudo VARCHAR(30),
     nom VARCHAR(30),
     prenom VARCHAR(30),
     sexe CHAR(2),
@@ -29,7 +29,7 @@ CREATE TABLE partie
 CREATE TABLE jouer
 (
     idPartie INTEGER,
-    pseudo VARCHAR(30) UNIQUE,
+    pseudo VARCHAR(30),
     numJoueur INTEGER,
     PRIMARY KEY (idPartie,pseudo),
     FOREIGN KEY (idPartie) REFERENCES partie(idPartie),

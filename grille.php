@@ -16,18 +16,22 @@
     // Si vous voulez mieux comprendre la structure de données retournée :
     $_SESSION['tour'] = $tabRes['tour'];
     
-    if($_SESSION['tour'] == 1) {
+    if($_SESSION['numJoueur'] == 1) {
         $grille_joueur = json_decode($tabRes['Grillej1']);
         $grille_enemi = json_decode($tabRes['Grillej2']);
         $_SESSION['grille_joueur'] = $grille_joueur;
         $_SESSION['grille_enemi'] = $grille_enemi;
-    }else if($_SESSION['tour'] == 2) {
+    }else if($_SESSION['numJoueur'] == 2) {
         $grille_joueur = json_decode($tabRes['Grillej2']);
-        $grille_enemi = json_decode($tabRes['Grille1']);
+        $grille_enemi = json_decode($tabRes['Grillej1']);
         $_SESSION['grille_joueur'] = $grille_joueur;
         $_SESSION['grille_enemi'] = $grille_enemi;
     }
     
+    /* var_dump( $_SESSION['grille_joueur']);
+    var_dump( $_SESSION['grille_enemi']);
+    var_dump( $_SESSION['numJoueur']);
+    var_dump( $_SESSION['tour']); */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +46,7 @@
     <script src="js/navire.js"></script>
     <title>Grille</title>
 </head>
-<body class="container" onload="getPartie();getTour()">
+<body class="container" onload="getPartie();getTour();getTirs()">
     <header>
         <div class="players">
             <div class="player">
@@ -72,7 +76,7 @@
         <div class="grid">
             <?php 
                 for($i=0;$i<100;$i++){
-                   if($_SESSION['tour'] == 1){
+                   if($_SESSION['tour'] == $_SESSION['numJoueur']){
                         echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\" onclick=\"gererClick($i)\"></div>";
                    }else{
                         echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\"></div>";

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION['id_partie'] = '';
+    // $_SESSION['id_partie'] = '';
     $_SESSION['role'] = '';
 	include('./connexion.php');
 	// include('./end.php');
@@ -22,7 +22,7 @@
             foreach($tabRes as $uneLigne)
             {
                 $i = $uneLigne['idPartie'];
-                echo $uneLigne['idPartie']. ": <a href='grille.php?partie=$i'>Rejoindre Partie</a> <br>"; 
+                echo $uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie()\">Rejoindre Partie</a> <br>"; 
             }
         ?>
 	
