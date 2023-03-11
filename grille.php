@@ -14,9 +14,20 @@
     // récupération du résultat dans un tableau associatif
     $tabRes = $stmt->fetch();
     // Si vous voulez mieux comprendre la structure de données retournée :
-    $grille = json_decode($tabRes['Grillej1']);
-    $_SESSION['grille'] = $grille;
     $_SESSION['tour'] = $tabRes['tour'];
+    
+    if($_SESSION['tour'] == 1) {
+        $grille_joueur = json_decode($tabRes['Grillej1']);
+        $grille_enemi = json_decode($tabRes['Grillej2']);
+        $_SESSION['grille_joueur'] = $grille_joueur;
+        $_SESSION['grille_enemi'] = $grille_enemi;
+    }else if($_SESSION['tour'] == 2) {
+        $grille_joueur = json_decode($tabRes['Grillej2']);
+        $grille_enemi = json_decode($tabRes['Grille1']);
+        $_SESSION['grille_joueur'] = $grille_joueur;
+        $_SESSION['grille_enemi'] = $grille_enemi;
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +42,7 @@
     <script src="js/navire.js"></script>
     <title>Grille</title>
 </head>
-<body class="container" onload="getPartie();getTour();">
+<body class="container" onload="getPartie()">
     <header>
         <div class="players">
             <div class="player">
@@ -61,7 +72,7 @@
         <div class="grid">
             <?php 
                 for($i=0;$i<100;$i++){
-                   if($_SESSION['tour'] == $_SESSION['numJoueur']){
+                   if($_SESSION['tour'] == 1){
                         echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\" onclick=\"gererClick($i)\"></div>";
                    }else{
                         echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\"></div>";
