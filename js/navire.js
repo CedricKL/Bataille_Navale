@@ -42,7 +42,7 @@ function creerNavire(data){
    
 }
 function getPartie() {
-    $.get("http://localhost/Bataille_Navale/getGrille.php", creerNavire);
+    $.get("./getGrille.php", creerNavire);
 }
 
 function tour(data){
