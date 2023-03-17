@@ -18,9 +18,12 @@ function gererClick(id) {
   });
 }
 
-function rejoindrePartie() {
+function rejoindrePartie(id) {
+  console.log(id);
   $.ajax({
     url:"rejoindrePartie.php",
+    type:"POST",
+    data: {"id": id},
     success: function(){
         console.log("Partie rejoins");
         console.log(data);

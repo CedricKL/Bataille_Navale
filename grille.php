@@ -28,6 +28,52 @@
         $_SESSION['grille_enemi'] = $grille_enemi;
     }
     
+    // get score
+    $requete = "SELECT * FROM jouer WHERE idPartie = :idPartie";
+    $stmt = $c->prepare($requete);
+    $idPartie = $_SESSION['id_partie'];
+    $stmt->bindParam(':idPartie', $idPartie);
+    $stmt->execute();
+
+    $tabRes = $stmt->fetchAll();
+    if(count($tabRes) == 2) {
+        // echo "ici";
+        // var_dump($tabRes);
+        if($_SESSION['numJoueur'] == 1) {
+
+            if($tabRes[0]['numJoueur'] == 1) {
+                $_SESSION['score_joueur'] = $tabRes[0]['score'];
+                $_SESSION['score_enemi'] = $tabRes[1]['score'];
+            }
+            if($tabRes[1]['numJoueur'] == 1) {
+                $_SESSION['score_joueur'] = $tabRes[1]['score'];
+                $_SESSION['score_enemi'] = $tabRes[0]['score'];
+            }
+
+        }else  if($_SESSION['numJoueur'] == 2) {
+                
+            if($tabRes[0]['numJoueur'] == 2) {
+                $_SESSION['score_joueur'] = $tabRes[0]['score'];
+                $_SESSION['score_enemi'] = $tabRes[1]['score'];
+            }
+            if($tabRes[1]['numJoueur'] == 2) {
+                $_SESSION['score_joueur'] = $tabRes[1]['score'];
+                $_SESSION['score_enemi'] = $tabRes[0]['score'];
+            }
+                    
+        }
+    }else  if(count($tabRes) == 1) {
+        $_SESSION['score_joueur'] = $tabRes[0]['score'];
+        $_SESSION['score_enemi'] = 0;
+    }
+    // var_dump($tabRes);
+    var_dump( $_SESSION['numJoueur']);
+    var_dump( $_SESSION['score_joueur']);
+    var_dump( $_SESSION['score_enemi']);
+    //var_dump($tabRes);
+    /*$_SESSION['score_jouer'] = $grille_joueur;
+    $_SESSION['score_enemi'] = $grille_enemi;*/
+
     /* var_dump( $_SESSION['grille_joueur']);
     var_dump( $_SESSION['grille_enemi']);
     var_dump( $_SESSION['numJoueur']);
@@ -52,12 +98,28 @@
             <div class="player">
             <img src="img/player1.png" alt="Player 1">
             <h3>Player 1</h3>
-            <span>Score: 0</span>
+            <span id="j1">Score: 
+                <?php 
+                    if($_SESSION['numJoueur'] == 2) {
+                        echo $_SESSION['score_enemi'];
+                    }else if($_SESSION['numJoueur'] == 1) {
+                        echo $_SESSION['score_joueur'];
+                    }
+                ?>
+            </span>
             </div>
             <div class="player">
             <img src="img/player2.png" alt="Player 2">
             <h3>Player 2</h3>
-            <span>Score: 0</span>
+            <span>Score: 
+            <?php 
+                    if($_SESSION['numJoueur'] == 2) {
+                        echo $_SESSION['score_joueur'];
+                    }else if($_SESSION['numJoueur'] == 1) {
+                        echo $_SESSION['score_enemi'];
+                    }
+                ?>
+            </span>
             </div>
         </div>
     </header>

@@ -22,7 +22,7 @@
             foreach($tabRes as $uneLigne)
             {
                 $i = $uneLigne['idPartie'];
-                echo $uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie()\">Rejoindre Partie</a> <br>"; 
+                echo $uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie($i)\">Rejoindre Partie</a> <br>"; 
             }
         ?>
 	

@@ -7,7 +7,7 @@ $_SESSION['numJoueur'] = '2';
 $num = 2;
 $requete = "INSERT INTO jouer(idPartie,pseudo,numJoueur) VALUES(:idPartie, :pseudo, :numJoueur)";
 $stmt = $c->prepare($requete);
-$stmt->bindParam(":idPartie",$_SESSION['id_partie']);
+$stmt->bindParam(":idPartie",$_POST['id']);
 $stmt->bindParam(":pseudo",$_SESSION['pseudo']);
 $stmt->bindParam(":numJoueur",$num);
 $stmt->execute();

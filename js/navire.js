@@ -1,9 +1,9 @@
 $(document).ready(function() {
     var temps = 2000;
 
-     setTimeout(() => {
+    setTimeout(() => {
         location.reload();
-    }, temps); 
+    }, temps);
 })
 
 function creerPartie() {
