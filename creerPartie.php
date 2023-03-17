@@ -14,51 +14,80 @@
     /* $grilleJ1 = '[
         "3":1,"4":1, "5":1,"6":1,"7":1,"23":1,"34":1,"45":1,"51":1,"52":1,"53":1,"54":1,"55":1,"56":1,"67":1,"84":1,"85":1,"86":1,"87":1,"88":1,
     ]'; */
-    $grilleJ1 = array(
-        "3" => 1,
-        "4" => 1,
-        "5" => 1,
-        "6" => 1,
-        "7" => 1,
-        "23" => 1,
-        "34" => 1,
-        "45" => 1,
-        "51" => 1,
-        "52" => 1,
-        "53" => 1,
-        "54" => 1,
-        "55" => 1,
-        "56" => 1,
-        "67" => 1,
-        "84" => 1,
-        "85" => 1,
-        "86" => 1,
-        "87" => 1,
-        "88" => 1,
-    );
+    $grilleJ1 = [];
+    $cpt = 0;
+    $sens = -1;
+    while($cpt != 5){
+        $val = rand(0, 99);
+        $cond1 = !array_key_exists($val,$grilleJ1) && !array_key_exists($val+1,$grilleJ1) && !array_key_exists($val+2,$grilleJ1) && !array_key_exists($val+3,$grilleJ1);
+        $cond2 = !array_key_exists($val,$grilleJ1) && !array_key_exists($val-1,$grilleJ1) && !array_key_exists($val-2,$grilleJ1) && !array_key_exists($val-3,$grilleJ1); 
+        $cond3 = !array_key_exists($val,$grilleJ1) && !array_key_exists($val+11,$grilleJ1) && !array_key_exists($val+22,$grilleJ1);
+        $cond4 = !array_key_exists($val,$grilleJ1) && !array_key_exists($val-11,$grilleJ1) && !array_key_exists($val-22,$grilleJ1);
+        if($cond1 || $cond2 || $cond3 || $cond4){
+            if($sens == -1){
+                if($val%10 < 6 ){
+                    for($i=0;$i<4;$i++){
+                        $grilleJ1[$val+$i] = 1;
+                    }
+                }else{
+                    for($i=0;$i<4;$i++){
+                        $grilleJ1[$val-$i] = 1;
+                    } 
+                }
+                $sens = 1;
+            }else{
+                if($val< 80){
+                    for($i=0;$i<3;$i++){
+                        $grilleJ1[$val+($i*10)] = 1;
+                    } 
+                }else{
+                    for($i=0;$i<3;$i++){
+                        $grilleJ1[$val-($i*10)] = 1;
+                    }                     
+                }
+                $sens = -1; 
+            }
+            $cpt++;
+        }
+    };
 
-    $grilleJ2 = array(
-        "3" => 1,
-        "4" => 1,
-        "5" => 1,
-        "6" => 1,
-        "7" => 1,
-        "23" => 1,
-        "34" => 1,
-        "45" => 1,
-        "51" => 1,
-        "52" => 1,
-        "53" => 1,
-        "54" => 1,
-        "55" => 1,
-        "56" => 1,
-        "67" => 1,
-        "84" => 1,
-        "85" => 1,
-        "86" => 1,
-        "87" => 1,
-        "88" => 1,
-    );
+    $grilleJ2 = [];
+    $cpt = 0;
+    $sens = -1;
+    while($cpt != 5){
+        $val = rand(0, 99);
+        $cond1 = !array_key_exists($val,$grilleJ2) && !array_key_exists($val+1,$grilleJ2) && !array_key_exists($val+2,$grilleJ2) && !array_key_exists($val+3,$grilleJ2);
+        $cond2 = !array_key_exists($val,$grilleJ2) && !array_key_exists($val-1,$grilleJ2) && !array_key_exists($val-2,$grilleJ2) && !array_key_exists($val-3,$grilleJ2); 
+        $cond3 = !array_key_exists($val,$grilleJ2) && !array_key_exists($val+11,$grilleJ2) && !array_key_exists($val+22,$grilleJ2);
+        $cond4 = !array_key_exists($val,$grilleJ2) && !array_key_exists($val-11,$grilleJ2) && !array_key_exists($val-22,$grilleJ2);
+        if($cond1 || $cond2 || $cond3 || $cond4){
+            if($sens == -1){
+                if($val%10 < 6 ){
+                    for($i=0;$i<4;$i++){
+                        $grilleJ2[$val+$i] = 1;
+                    }
+                }else{
+                    for($i=0;$i<4;$i++){
+                        $grilleJ2[$val-$i] = 1;
+                    } 
+                }
+                $sens = 1;
+            }else{
+                if($val< 80){
+                    for($i=0;$i<3;$i++){
+                        $grilleJ2[$val+($i*10)] = 1;
+                    } 
+                }else{
+                    for($i=0;$i<3;$i++){
+                        $grilleJ2[$val-($i*10)] = 1;
+                    }                     
+                }
+                $sens = -1; 
+            }
+            $cpt++;
+        }
+    };
+
     // Legende Tour
     // 1 - Joueur 1 2- Joueur 2
     $tour = '1';
