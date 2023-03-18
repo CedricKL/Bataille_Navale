@@ -14,7 +14,8 @@ function gererClick(id) {
     data: {"id": id}
   }).done(function() {
     console.log("Reussi");
-    location.reload();
+    // location.reload();
+    getTirs();
   });
 }
 
@@ -59,8 +60,11 @@ function getTirs() {
         
         for(let i=0;i<=keys.length;i++){
 
-          if(values[i] == 2)
-          $("#e"+keys[i]).css("background-color","grey");
+          if(values[i] == 2) {
+            $("#e"+keys[i]).css("background-color","grey");
+            $("#e"+keys[i]).css("background-image", "none");
+          }
+          
   
           if(values[i] == 3) {
             $("#e"+keys[i]).css("background-image", "url(\"img/feu.gif\")");

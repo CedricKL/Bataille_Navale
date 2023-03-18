@@ -68,8 +68,10 @@
     }
     // var_dump($tabRes);
     var_dump( $_SESSION['numJoueur']);
-    var_dump( $_SESSION['score_joueur']);
-    var_dump( $_SESSION['score_enemi']);
+    /* var_dump( $_SESSION['score_joueur']);
+    var_dump( $_SESSION['score_enemi']); */
+    var_dump( $_SESSION['tour']);
+    var_dump( $_SESSION['pseudo']);
     //var_dump($tabRes);
     /*$_SESSION['score_jouer'] = $grille_joueur;
     $_SESSION['score_enemi'] = $grille_enemi;*/
@@ -128,25 +130,7 @@
 
     </div>
     <div class="game">
-        <div class="grid">
-            <?php 
-                for($i=0;$i<100;$i++){
-                    echo "<div class=\"carreau\" id=\"j$i\"></div>";
-                } 
-            ?>     
-        </div>
-        <div class="grid">
-            <?php 
-                for($i=0;$i<100;$i++){
-                   if($_SESSION['tour'] == $_SESSION['numJoueur']){
-                        echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\" onclick=\"gererClick($i)\"></div>";
-                   }else{
-                        echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\"></div>";
-                   }
-                        
-                } 
-            ?>     
-        </div>
+        <?php include 'dessinerGrille.php'; ?>
         <!-- <div class="choix">
             <?php 
                 for($i=0;$i<40;$i++){

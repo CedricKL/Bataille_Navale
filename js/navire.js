@@ -1,9 +1,22 @@
+setInterval(function() {
+    getPartie();
+    $.ajax({
+        url:"dessinerGrille.php",
+        success: function(){
+            console.log("Partie redessiné");
+        },
+        error: function(xhr ,status, error){
+            console.log("création échouée: "+error);
+        }
+    });
+},1000);
+
 $(document).ready(function() {
     var temps = 2000;
 
-    setTimeout(() => {
+    /* setTimeout(() => {
         location.reload();
-    }, temps);
+    }, temps); */
 })
 
 function creerPartie() {
