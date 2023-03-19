@@ -19,7 +19,7 @@ $tabRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <article id="statistiques1">
 	<div>
-		<img src="img/coupe.png" alt="Coupe" style="width: 50px; height: 50px;">
+		<img src="img/coupe.png" alt="Coupe" class="petite_image">
 		<span style="color:  #842029;"><u><strong> Tableau des scores </strong></u></span>
 	</div>
 	<div class="container">
@@ -58,8 +58,9 @@ $tabRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 							if ($tabRes2['etat'] == 1)
 								echo "	<td> En cours </td>";
 							else if ($tabRes2['etat'] == 2)
+								echo "	<td> En attente </td>";
+							else if ($tabRes2['etat'] == 3)
 								echo "	<td> Terminée </td>";
-
 							echo "	<td>" . $valeur['score'] . "</td>";
 
 							$requete = "SELECT * FROM jouer WHERE idPartie = :idPartie AND pseudo = :pseudo";
@@ -87,11 +88,11 @@ $tabRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 							$enemi = $stmt->fetch();
 
 							// var_dump($tabRes3 );
-							if ($tabRes2['etat'] == 2 && $joueur['score'] > $enemi['score']) {
+							if ($tabRes2['etat'] == 3 && $joueur['score'] > $enemi['score']) {
 								echo "	<td> Victoire </td>";
-							} else if ($tabRes2['etat'] == 2 && $joueur['score'] < $enemi['score']) {
+							} else if ($tabRes2['etat'] == 3 && $joueur['score'] < $enemi['score']) {
 								echo "	<td> Défaite </td>";
-							} else if ($tabRes2['etat'] == 2 && $joueur['score'] == $enemi['score']) {
+							} else if ($tabRes2['etat'] == 3 && $joueur['score'] == $enemi['score']) {
 								echo " Nul ";
 							}
 							echo "</tr>";
@@ -158,11 +159,11 @@ $tabRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 									// récupération du résultat dans un tableau associatif
 									$tabRes2 = $stmt->fetch();
 
-									if ($tabRes2['etat'] == 2 && $valeur1['score'] > $valeur2['score']) {
+									if ($tabRes2['etat'] == 3 && $valeur1['score'] > $valeur2['score']) {
 										$victoires++;
-									} else if ($tabRes2['etat'] == 2 && $valeur1['score'] < $valeur2['score']) {
+									} else if ($tabRes2['etat'] == 3 && $valeur1['score'] < $valeur2['score']) {
 										$defaites++;
-									} else if ($tabRes2['etat'] == 2 && $valeur1['score'] == $valeur2['score']) {
+									} else if ($tabRes2['etat'] == 3 && $valeur1['score'] == $valeur2['score']) {
 										$nuls++;
 									}
 								}
