@@ -16,6 +16,24 @@ function gererClick(id,numj) {
         console.log("Reussi");
         getTirs();
       });
+
+      $.ajax({
+        url:"getScores.php",
+        success:(data)=>{
+          let scores = data.split(',');
+          let score_joueur = scores[0];
+          let score_enemi = scores[1];
+
+          if(numj == 2) {
+            $("#score_joueur_1").html(score_enemi);
+            $("#score_joueur_2").html(score_joueur);
+        }else if(numj== 1) {
+          $("#score_joueur_1").html(score_joueur);
+          $("#score_joueur_2").html(score_enemi);
+        }
+
+        }
+      });
     }else{
       console.log("Ce n'est pas votre tour!");
     }
@@ -39,7 +57,7 @@ function getTour(){
 }
 
 
-function rejoindrePartie() {
+function rejoindrePartie(id) {
   $.ajax({
     url:"rejoindrePartie.php",
     type:"POST",

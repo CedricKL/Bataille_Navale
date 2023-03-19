@@ -33,13 +33,29 @@
         $stmt->execute();
 
         // Gestion score
+        // Gestion score
+        $requete = "SELECT * FROM jouer WHERE idPartie = :idPartie AND numJoueur=:numJoueur";
+        $stmt = $c->prepare($requete);
+        // echo $_GET['zone'];
+        // var_dump( $_SESSION['grille']);
+
+        $partie = $_SESSION['id_partie'];
+        $numJoueur = $_SESSION['tour'];
+
+        $stmt->bindParam(":idPartie", $partie);
+        $stmt->bindParam(":numJoueur", $numJoueur);
+
+        $stmt->execute();
+
+        $resultat = $stmt->fetch();
+
         $requete2 = "UPDATE jouer SET score=:score WHERE idPartie=:idPartie AND numJoueur=:numJoueur";
         $stmt = $c->prepare($requete2);
         // echo $_GET['zone'];
         // var_dump( $_SESSION['grille']);
 
         $partie = $_SESSION['id_partie'];
-        $score = $_SESSION['score_joueur'];
+        $score = $resultat['score'];
         $numJoueur = $_SESSION['tour'];
 
         // Math.max(0, score - 30);
@@ -85,13 +101,28 @@
 
 
          // Gestion score
+         $requete = "SELECT * FROM jouer WHERE idPartie = :idPartie AND numJoueur=:numJoueur";
+         $stmt = $c->prepare($requete);
+         // echo $_GET['zone'];
+         // var_dump( $_SESSION['grille']);
+ 
+         $partie = $_SESSION['id_partie'];
+         $numJoueur = $_SESSION['tour'];
+
+         $stmt->bindParam(":idPartie", $partie);
+         $stmt->bindParam(":numJoueur", $numJoueur);
+
+         $stmt->execute();
+
+         $resultat = $stmt->fetch();
+
          $requete2 = "UPDATE jouer SET score=:score WHERE idPartie=:idPartie AND numJoueur=:numJoueur";
          $stmt = $c->prepare($requete2);
          // echo $_GET['zone'];
          // var_dump( $_SESSION['grille']);
  
          $partie = $_SESSION['id_partie'];
-         $score = $_SESSION['score_joueur'];
+         $score = $resultat['score'];
          $numJoueur = $_SESSION['tour'];
  
          // Math.max(0, score - 3);

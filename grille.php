@@ -54,11 +54,12 @@
             <h3>Player 1</h3>
             <span id="j1">Score: 
                 <?php 
-                    if($_SESSION['numJoueur'] == 2) {
+                    echo " <span id=\"score_joueur_1\"></span>";
+                   /* if($_SESSION['numJoueur'] == 2) {
                         echo $_SESSION['score_enemi'];
                     }else if($_SESSION['numJoueur'] == 1) {
                         echo $_SESSION['score_joueur'];
-                    }
+                    } */
                 ?>
             </span>
             </div>
@@ -67,11 +68,12 @@
             <h3>Player 2</h3>
             <span>Score: 
             <?php 
-                    if($_SESSION['numJoueur'] == 2) {
+                    /* if($_SESSION['numJoueur'] == 2) {
                         echo $_SESSION['score_joueur'];
                     }else if($_SESSION['numJoueur'] == 1) {
                         echo $_SESSION['score_enemi'];
-                    }
+                    } */
+                    echo " <span id=\"score_joueur_2\"></span>";
                 ?>
             </span>
             </div>
