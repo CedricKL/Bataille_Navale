@@ -17,76 +17,53 @@
     $grilleJ1 = [];
     $cpt = 0;
     $sens = -1;
-    while($cpt != 5){
-        $val = rand(0, 99);
-        $cond1 = !array_key_exists($val,$grilleJ1) && !array_key_exists($val+1,$grilleJ1) && !array_key_exists($val+2,$grilleJ1) && !array_key_exists($val+3,$grilleJ1);
-        $cond2 = !array_key_exists($val,$grilleJ1) && !array_key_exists($val-1,$grilleJ1) && !array_key_exists($val-2,$grilleJ1) && !array_key_exists($val-3,$grilleJ1); 
-        $cond3 = !array_key_exists($val,$grilleJ1) && !array_key_exists($val+11,$grilleJ1) && !array_key_exists($val+22,$grilleJ1);
-        $cond4 = !array_key_exists($val,$grilleJ1) && !array_key_exists($val-11,$grilleJ1) && !array_key_exists($val-22,$grilleJ1);
-        if($cond1 || $cond2 || $cond3 || $cond4){
-            if($sens == -1){
-                if($val%10 < 6 ){
-                    for($i=0;$i<4;$i++){
-                        $grilleJ1[$val+$i] = 1;
-                    }
-                }else{
-                    for($i=0;$i<4;$i++){
-                        $grilleJ1[$val-$i] = 1;
-                    } 
-                }
-                $sens = 1;
-            }else{
-                if($val< 80){
-                    for($i=0;$i<3;$i++){
-                        $grilleJ1[$val+($i*10)] = 1;
-                    } 
-                }else{
-                    for($i=0;$i<3;$i++){
-                        $grilleJ1[$val-($i*10)] = 1;
-                    }                     
-                }
-                $sens = -1; 
-            }
-            $cpt++;
+    $numbers = array(); // tableau qui va contenir les nombres aléatoires distincts
+
+    while (count($numbers) < 5) {
+        $number = rand(0, 9); // génère un nombre aléatoire
+        if (!in_array($number, $numbers)) { // vérifie si le nombre n'est pas déjà dans le tableau
+            $numbers[] = $number; // ajoute le nombre au tableau final
         }
-    };
+    }
+    foreach($numbers as $ligne){
+        $col = rand(0, 9);
+        $case = $ligne*10+$col;
+        if($case%10 < 6 ){
+            for($i=0;$i<4;$i++){
+                $grilleJ1[$case+$i] = 1;
+            }
+        }else{
+            for($i=0;$i<4;$i++){
+                $grilleJ1[$case-$i] = 1;
+            } 
+        }
+    }
+
+
+
 
     $grilleJ2 = [];
     $cpt = 0;
     $sens = -1;
-    while($cpt != 5){
-        $val = rand(0, 99);
-        $cond1 = !array_key_exists($val,$grilleJ2) && !array_key_exists($val+1,$grilleJ2) && !array_key_exists($val+2,$grilleJ2) && !array_key_exists($val+3,$grilleJ2);
-        $cond2 = !array_key_exists($val,$grilleJ2) && !array_key_exists($val-1,$grilleJ2) && !array_key_exists($val-2,$grilleJ2) && !array_key_exists($val-3,$grilleJ2); 
-        $cond3 = !array_key_exists($val,$grilleJ2) && !array_key_exists($val+11,$grilleJ2) && !array_key_exists($val+22,$grilleJ2);
-        $cond4 = !array_key_exists($val,$grilleJ2) && !array_key_exists($val-11,$grilleJ2) && !array_key_exists($val-22,$grilleJ2);
-        if($cond1 || $cond2 || $cond3 || $cond4){
-            if($sens == -1){
-                if($val%10 < 6 ){
-                    for($i=0;$i<4;$i++){
-                        $grilleJ2[$val+$i] = 1;
-                    }
-                }else{
-                    for($i=0;$i<4;$i++){
-                        $grilleJ2[$val-$i] = 1;
-                    } 
-                }
-                $sens = 1;
-            }else{
-                if($val< 80){
-                    for($i=0;$i<3;$i++){
-                        $grilleJ2[$val+($i*10)] = 1;
-                    } 
-                }else{
-                    for($i=0;$i<3;$i++){
-                        $grilleJ2[$val-($i*10)] = 1;
-                    }                     
-                }
-                $sens = -1; 
-            }
-            $cpt++;
+    while (count($numbers) < 5) {
+        $number = rand(0, 9); // génère un nombre aléatoire
+        if (!in_array($number, $numbers)) { // vérifie si le nombre n'est pas déjà dans le tableau
+            $numbers[] = $number; // ajoute le nombre au tableau final
         }
-    };
+    }
+    foreach($numbers as $ligne){
+        $col = rand(0, 9);
+        $case = $ligne*10+$col;
+        if($case%10 < 6 ){
+            for($i=0;$i<4;$i++){
+                $grilleJ2[$case+$i] = 1;
+            }
+        }else{
+            for($i=0;$i<4;$i++){
+                $grilleJ2[$case-$i] = 1;
+            } 
+        }
+    }
 
     // Legende Tour
     // 1 - Joueur 1 2- Joueur 2
@@ -94,7 +71,7 @@
 
     // Legende Etat
     // 1 - demarré 2- En Attente 0-Pas encore commence
-    $etat = '1';
+    $etat = '2';
     $g1Json = json_encode($grilleJ1);
     $g2Json = json_encode($grilleJ2);
     $stmt->bindParam(":grilleJ1",$g1Json);
