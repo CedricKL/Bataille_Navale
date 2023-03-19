@@ -1,7 +1,7 @@
 <?php
     // session_start();
     // $_SESSION['id_partie'] = '';
-    $_SESSION['role'] = '';
+    // $_SESSION['role'] = '';
 	include('./connexion.php');
 	// include('./end.php');
  	require_once('function.php');
