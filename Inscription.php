@@ -27,7 +27,7 @@ if(isset($_POST['formInscription']))
             if(filter_var($mail, FILTER_VALIDATE_EMAIL))
             {
 
-              $reqmail = $bdd->prepare("SELECT * FROM joueur WHERE mail= ?");
+              $reqmail = $c->prepare("SELECT * FROM joueur WHERE mail= ?");
               $reqmail->execute(array($mail));
               $mailexist= $reqmail->rowcount();
               if($mailexist==0)
@@ -35,9 +35,10 @@ if(isset($_POST['formInscription']))
                 if($mdp==$mdp2)
                 {
                     echo "Nickel";
-                    $inserttmbr=$bdd->prepare("INSERT INTO joueur(pseudo,mail,mdp) VALUES (?,?,?)");
+                    $inserttmbr=$c->prepare("INSERT INTO joueur(pseudo,mail,mdp) VALUES (?,?,?)");
                     $inserttmbr->execute(array($pseudo, $mail, $mdp));
                     $erreur= "Votre compte a bien été cree";  
+                    $_SESSION['pseudo'] = $pseudo;
                     header('Location:index.php');
                 }
                 else
@@ -92,17 +93,33 @@ if(isset($_POST['formInscription']))
 </head>
 <body>
 
-
-<header id="entete">
-    <div style="float:left;">
-        <a href="index.php"> <img src="img/3il.png" width="30%" height="30%"> </a> 
-    </div>
-    <h1>Bataille navale</h1>
-</header>
-    <div align="center">
-   <h2>Inscription</h2> 
+<div style="margin-left:30%;" align="center">
+   <h2 style="color: rgb(255, 197, 40);">Inscription</h2> 
    <br/><br />
    <form method="POST" action="">
+      <div class="mb-3">
+          <label for="pseudo" class="form-label">Pseudo</label>
+          <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)){echo $pseudo;} ?>">
+      </div>
+      <div class="mb-3">
+          <label for="pseudo" class="form-label">Pseudo</label>
+          <input type="email" class="form-control" placeholder="Votre mail" id="mail" name="mail"  value="<?php if(isset($mail)){echo $mail;} ?>" />    
+      </div>
+      <div class="mb-3">
+          <label for="mail2" class="form-label">Confirmation du mail :</label>
+          <input type="email" class="form-control" placeholder="Votre mail" id="mail2" name="mail2"  value="<?php if(isset($mail2)){echo $mail2;} ?>" />    
+      </div>
+      <div class="mb-3">
+          <label for="mdp" class="form-label">Mot de passe</label>
+          <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Votre mot de passe">
+      </div>
+      <div class="mb-3">
+          <label for="mdp2" class="form-label">Confirmation du mot de passe</label>
+          <input type="password" class="form-control" name="mdp2" id="mdp2" placeholder="Confirmez Votre mot de passe">
+      </div>
+      <button type="submit" name="formInscription" class="btn btn-primary"> Je m'inscris </button>
+   </form>
+   <!--<form method="POST" action="">
 
 
    <table>
@@ -168,7 +185,7 @@ if(isset($_POST['formInscription']))
    </table>
 
       
-   </form>
+   </form> -->
    <br />
    <?php
    if(isset($erreur))
@@ -177,11 +194,5 @@ if(isset($_POST['formInscription']))
    }
    ?>
     </div>
-    <footer id="footer">
-	<img src="img/3il.png" width="25%" height="25%">
-    <a href="http://www.3il-ingenieurs.fr/" target="_blank" alt="Page 3IL"> 3IL- Ingénieurs</a> 
-    <a href="" target="_blank" alt="Page BDW1">Programmation web</a>		
-	<a>2023</a>
-</footer>
 </body>
 </html>

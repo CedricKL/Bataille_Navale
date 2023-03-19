@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     // $_SESSION['id_partie'] = '';
     $_SESSION['role'] = '';
 	include('./connexion.php');

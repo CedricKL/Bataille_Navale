@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,15 +16,32 @@
 
 <body>
 	<?php 
+		
 		include('static/header.php'); 
-		include('static/menu.php'); 
+		include('static/menu.php');
+		if(!isset($_SESSION['pseudo'])) {
+			$nomPage = "Pageconnexion.php";
+			//header("Location: index.php?page=Pageconnexion.php");
+		}
+		
 	?>
 	<div id="contenu">
 		<?php //permet d'inclure plus facilement tout notre php
-			$nomPage = 'static/accueil.php';
-			if(isset($_GET['page'])) { 
-				if(file_exists(addslashes($_GET['page']))) 
-					$nomPage = addslashes($_GET['page']);
+			if(isset($_GET['page'])) {
+				if($_GET['page'] == "Inscription.php")  {
+					$nomPage = "Inscription.php";
+				}
+			}else {
+				$nomPage = 'Pageconnexion.php';
+			}
+			
+			if(isset($_SESSION['pseudo'])) {
+				if(isset($_GET['page'])) { 
+					if(file_exists(addslashes($_GET['page']))) 
+						$nomPage = addslashes($_GET['page']);
+				}else {
+					$nomPage = 'static/accueil.php';
+				}
 			}
 			include($nomPage); 
 		?>

@@ -1,6 +1,6 @@
 <?php
     session_start() ;  
-    $_SESSION['pseudo'] = "Ced"; 
+    // $_SESSION['pseudo'] = "Ced"; 
     include('./connexion.php');
     // include('./end.php');
     require_once('function.php');

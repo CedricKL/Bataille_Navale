@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['pseudo'] = "Ded"; 
+// $_SESSION['pseudo'] = "Ded"; 
 include('./connexion.php');
 
 $requete = "SELECT * FROM jouer WHERE idPartie = :idPartie AND pseudo = :pseudo";

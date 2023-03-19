@@ -8,6 +8,7 @@ CREATE TABLE joueur
     pseudo VARCHAR(30),
     nom VARCHAR(30),
     prenom VARCHAR(30),
+    mail VARCHAR(40) NOT NULL,
     sexe CHAR(2),
     ville VARCHAR(30),
     mdp VARCHAR(40) NOT NULL,

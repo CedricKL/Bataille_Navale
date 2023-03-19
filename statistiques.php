@@ -1,10 +1,15 @@
 <!-- Page de statistiques -->
 
 <?php
-session_start();
+//session_start();
 include('./connexion.php');
-include('./end.php');
-include('./connexion.php');
+
+if(isset($_SESSION['role']) && ($_SESSION['role'] != 'admin') ) {
+	if(isset($_SESSION['pseudo']))
+		header("Location: index.php");
+	else
+		header("Location: index.php?page=PageConnexion.php");
+}
 
 // get data from jouer
 $requete = "SELECT * FROM jouer ORDER BY score DESC LIMIT 10";
