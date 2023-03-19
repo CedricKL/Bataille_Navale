@@ -27,7 +27,7 @@
         $_SESSION['grille_joueur'] = $grille_joueur;
         $_SESSION['grille_enemi'] = $grille_enemi;
     }
-    
+    session_write_close();
     /* var_dump( $_SESSION['grille_joueur']);
     var_dump( $_SESSION['grille_enemi']);
     var_dump( $_SESSION['numJoueur']);
@@ -46,7 +46,7 @@
     <script src="js/navire.js"></script>
     <title>Grille</title>
 </head>
-<body class="container" onload="getPartie();getTour();getTirs()">
+<body class="container" onload="getPartie();getTirs();getTour();">
     <header>
         <div class="players">
             <div class="player">
@@ -66,25 +66,7 @@
 
     </div>
     <div class="game">
-        <div class="grid">
-            <?php 
-                for($i=0;$i<100;$i++){
-                    echo "<div class=\"carreau\" id=\"j$i\"></div>";
-                } 
-            ?>     
-        </div>
-        <div class="grid">
-            <?php 
-                for($i=0;$i<100;$i++){
-                   if($_SESSION['tour'] == $_SESSION['numJoueur']){
-                        echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\" onclick=\"gererClick($i)\"></div>";
-                   }else{
-                        echo "<div class=\"carreau carreauEnnemi \" id=\"e$i\"></div>";
-                   }
-                        
-                } 
-            ?>     
-        </div>
+        <?php include "dessinerGrille.php";?>
         <!-- <div class="choix">
             <?php 
                 for($i=0;$i<40;$i++){

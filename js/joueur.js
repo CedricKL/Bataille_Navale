@@ -1,22 +1,43 @@
-function gererClick(id) {
+function gererClick(id,numj) {
     // console.log("la case a été cliquée"+ e.id);
     //console.log($(this));
-     console.log(id);
+    console.log(id);
+    if(tourj == numj){
+         //  $("#j"+id).html("<img src=\"img/feu.gif\" alt=\"feu\" width=\"15\" height=\"15\">");
+      $("#e"+id).css("background-image", "url(\"img/feu.gif\")");
+      $("#e"+id).css("background-size", "contain");
+      $("#e"+id).css("background-repeat", "no-repeat");
 
-   //  $("#j"+id).html("<img src=\"img/feu.gif\" alt=\"feu\" width=\"15\" height=\"15\">");
-   $("#e"+id).css("background-image", "url(\"img/feu.gif\")");
-   $("#e"+id).css("background-size", "contain");
-   $("#e"+id).css("background-repeat", "no-repeat");
-
-   $.ajax({
-    url:"enregistrerGrille.php",
-    type:"POST",
-    data: {"id": id}
-  }).done(function() {
-    console.log("Reussi");
-    location.reload();
-  });
+      $.ajax({
+        url:"enregistrerGrille.php",
+        type:"POST",
+        data: {"id": id}
+      }).done(function() {
+        console.log("Reussi");
+        getTirs();
+      });
+    }else{
+      console.log("Ce n'est pas votre tour!");
+    }
 }
+
+setInterval(function(){
+  $.ajax({
+    url:"finPartie.php",
+    success:()=>{
+      console.log("tour du joueur: "+tourj);
+    }
+  });
+  getTour();
+},1000);
+
+function tour(data){
+  tourj =  data;
+}
+function getTour(){
+  $.get("./getTour.php",tour);
+}
+
 
 function rejoindrePartie() {
   $.ajax({
@@ -56,9 +77,10 @@ function getTirs() {
         
         for(let i=0;i<=keys.length;i++){
 
-          if(values[i] == 2)
+          if(values[i] == 2){
           $("#e"+keys[i]).css("background-color","grey");
-  
+          $("#e"+keys[i]).css("background-image", "none");
+          }
           if(values[i] == 3) {
             $("#e"+keys[i]).css("background-image", "url(\"img/feu.gif\")");
             $("#e"+keys[i]).css("background-size", "contain");
