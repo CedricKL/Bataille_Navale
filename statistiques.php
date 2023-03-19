@@ -4,7 +4,7 @@
 //session_start();
 include('./connexion.php');
 
-if(isset($_SESSION['role']) && ($_SESSION['role'] != 'admin') ) {
+if(!isset($_SESSION['role']) || ($_SESSION['role'] != 'admin') ) {
 	if(isset($_SESSION['pseudo']))
 		header("Location: index.php");
 	else

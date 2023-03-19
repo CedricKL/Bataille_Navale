@@ -10,6 +10,8 @@ include( "./connexion.php");
 if(isset($_POST['formInscription']))
 {
     $pseudo =htmlspecialchars($_POST['pseudo']);
+    $nom =htmlspecialchars($_POST['nom']);
+    $prenom =htmlspecialchars($_POST['prenom']);
     $mail= htmlspecialchars($_POST['mail']);
     $mail2= htmlspecialchars($_POST['mail2']);
     $mdp= sha1($_POST['mdp']);
@@ -35,11 +37,12 @@ if(isset($_POST['formInscription']))
                 if($mdp==$mdp2)
                 {
                     echo "Nickel";
-                    $inserttmbr=$c->prepare("INSERT INTO joueur(pseudo,mail,mdp) VALUES (?,?,?)");
-                    $inserttmbr->execute(array($pseudo, $mail, $mdp));
-                    $erreur= "Votre compte a bien été cree";  
-                    $_SESSION['pseudo'] = $pseudo;
-                    header('Location:index.php');
+                    $inserttmbr=$c->prepare("INSERT INTO joueur(pseudo,mail,mdp,nom,prenom) VALUES (?,?,?,?,?)");
+                    if($inserttmbr->execute(array($pseudo, $mail, $mdp,$nom,$prenom))){
+                        $erreur= "Votre compte a bien été cree";  
+                        $_SESSION['pseudo'] = $pseudo;
+                        header('Location:index.php?page=PageConnexion.php');
+                    };
                 }
                 else
                 {
@@ -102,7 +105,15 @@ if(isset($_POST['formInscription']))
           <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)){echo $pseudo;} ?>">
       </div>
       <div class="mb-3">
-          <label for="pseudo" class="form-label">Pseudo</label>
+          <label for="nom" class="form-label">Nom</label>
+          <input type="text" class="form-control" placeholder="Votre nom" id="nom" name="nom"  value="<?php if(isset($nom)){echo $nom;} ?>" />    
+      </div>
+      <div class="mb-3">
+          <label for="prenom" class="form-label">Prenom</label>
+          <input type="text" class="form-control" placeholder="Votre prenom" id="prenom" name="prenom"  value="<?php if(isset($prenom)){echo $prenom;} ?>" />    
+      </div>
+      <div class="mb-3">
+          <label for="mail" class="form-label">Mail</label>
           <input type="email" class="form-control" placeholder="Votre mail" id="mail" name="mail"  value="<?php if(isset($mail)){echo $mail;} ?>" />    
       </div>
       <div class="mb-3">

@@ -58,8 +58,14 @@ function getPartie() {
     $.get("./getGrille.php", creerNavire);
 }
 
+function supprimerUser(pseudo){
+    $.ajax({
+        url:"supprimerUser.php",
+        type:"POST",
+        data:{"pseudo":pseudo},
 
-    
-function traiterPartie(data) {
-
+    }).done(()=>{
+        alert("Utilisateur: "+pseudo+" supprimé avec succès!");
+        location.reload();
+    });
 }
