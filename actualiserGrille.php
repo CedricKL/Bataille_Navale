@@ -1,8 +1,14 @@
 <?php
 session_start();
+<<<<<<< HEAD
 //session_start();
 include('./connexion.php');
 
+=======
+
+include('./connexion.php');
+    
+>>>>>>> 8dee9226c3401de0c850de1ecf7d82e19e2e60f1
 // get positions navires
 $requete = "SELECT * FROM partie WHERE idPartie = :idPartie";
 $stmt = $c->prepare($requete);
@@ -27,6 +33,10 @@ if($_SESSION['numJoueur'] == 1) {
     $_SESSION['grille_joueur'] = $grille_joueur;
     $_SESSION['grille_enemi'] = $grille_enemi;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8dee9226c3401de0c850de1ecf7d82e19e2e60f1
 $json = json_encode($_SESSION['grille_enemi']);
 header('Content-Type: application/json');
 echo $json;

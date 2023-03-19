@@ -31,6 +31,7 @@ CREATE TABLE jouer
     idPartie INTEGER,
     pseudo VARCHAR(30),
     numJoueur INTEGER,
+    score INTEGER,
     PRIMARY KEY (idPartie,pseudo),
     FOREIGN KEY (idPartie) REFERENCES partie(idPartie),
     FOREIGN KEY (pseudo) REFERENCES joueur(pseudo)

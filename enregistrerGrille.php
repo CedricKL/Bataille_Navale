@@ -24,12 +24,37 @@
         $tour = 2;
         $partie = $_SESSION['id_partie'];
         // 1 - demarré 2- En Attente 0-Pas encore commence
+        // 1 - En cours 2-En Attente  3 - Terminée
 
         $g2Json = json_encode($newGrilleJ2);
         $stmt->bindParam(":grilleJ2",$g2Json);
         $stmt->bindParam(":tour", $tour);
         $stmt->bindParam(":idPartie", $partie);
         $stmt->execute();
+
+        // Gestion score
+        $requete2 = "UPDATE jouer SET score=:score WHERE idPartie=:idPartie AND numJoueur=:numJoueur";
+        $stmt = $c->prepare($requete2);
+        // echo $_GET['zone'];
+        // var_dump( $_SESSION['grille']);
+
+        $partie = $_SESSION['id_partie'];
+        $score = $_SESSION['score_joueur'];
+        $numJoueur = $_SESSION['tour'];
+
+        // Math.max(0, score - 30);
+        if( $newGrilleJ2[$id] == 2) {
+            $score = max(0, $score - 3);
+        }else if( $newGrilleJ2[$id] == 3) {
+            $score = $score + 5;
+        }
+        // +5: Touché; -3: Loupé
+
+        $stmt->bindParam(":score", $score);
+        $stmt->bindParam(":idPartie", $partie);
+        $stmt->bindParam(":numJoueur", $numJoueur);
+        $stmt->execute();
+
         exit(); 
     }else if($_SESSION['tour'] == 2) {
         $requete = "UPDATE partie SET Grillej1=:grilleJ1, tour=:tour WHERE idPartie=:idPartie";
@@ -58,6 +83,30 @@
         $stmt->bindParam(":idPartie", $partie);
         $stmt->execute();
 
+
+         // Gestion score
+         $requete2 = "UPDATE jouer SET score=:score WHERE idPartie=:idPartie AND numJoueur=:numJoueur";
+         $stmt = $c->prepare($requete2);
+         // echo $_GET['zone'];
+         // var_dump( $_SESSION['grille']);
+ 
+         $partie = $_SESSION['id_partie'];
+         $score = $_SESSION['score_joueur'];
+         $numJoueur = $_SESSION['tour'];
+ 
+         // Math.max(0, score - 3);
+         if( $newGrilleJ1[$id] == 2) {
+             $score = max(0, $score - 3);
+         }else if( $newGrilleJ1[$id] == 3) {
+             $score = $score + 5;
+         }
+         // +5: Touché; -3: Loupé
+ 
+         $stmt->bindParam(":score", $score);
+         $stmt->bindParam(":idPartie", $partie);
+         $stmt->bindParam(":numJoueur", $numJoueur);
+         $stmt->execute();
+         
         exit();
     }
     

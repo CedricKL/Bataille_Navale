@@ -10,20 +10,67 @@
 	<article id="jouer1">
         <button type="button" class="btn btn-primary" id="CreerPartie" onclick="creerPartie()">Creer Partie</button></br>
         <?php 
-          $requete = "SELECT * FROM partie WHERE etat = 1";
-          $stmt = $c->prepare($requete);
-          $stmt->execute();
-
-          // récupération du résultat dans un tableau associatif
-            $tabRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            // Si vous voulez mieux comprendre la structure de données retournée :
-            //var_dump($tabRes);
             
-            foreach($tabRes as $uneLigne)
-            {
-                $i = $uneLigne['idPartie'];
-                echo $uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie()\">Rejoindre Partie</a> <br>"; 
+            if($_SESSION['role'] == 'admin') {
+                $requete = "SELECT * FROM partie";
+                $stmt = $c->prepare($requete);
+                $stmt->execute();
+
+                // récupération du résultat dans un tableau associatif
+                $tabRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                // Si vous voulez mieux comprendre la structure de données retournée :
+                //var_dump($tabRes);
+                foreach($tabRes as $uneLigne)
+                {
+                    $requete = "SELECT * FROM partie WHERE idPartie = :idPartie";
+                    $stmt = $c->prepare($requete);
+
+                    $stmt->bindParam(":idPartie", $uneLigne['idPartie']);
+                    $stmt->execute();
+
+                    // récupération du résultat dans un tableau associatif
+                    $resultat = $stmt->fetch();
+
+                    $i = $uneLigne['idPartie'];
+                    // pour l'instant je ne sais pas si on doit laisser le lien pour l'admin de rejoindre la partie
+                    if($resultat['etat'] == 1) {
+                        echo "<img src=\"img/partie.png\" alt=\"Logo partie\" class=\"petite_image\">".$uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie($i)\">Rejoindre Partie</a> <span style=\"color: #842029;\">(Partie En Cours) ***  Actions</span><br>"; 
+                    }else if($resultat['etat'] == 2) {
+                        echo "<img src=\"img/partie.png\" alt=\"Logo partie\" class=\"petite_image\">".$uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie($i)\">Rejoindre Partie</a> <span style=\"color: #842029;\">(Partie En attente) ***  Actions </span><br>"; 
+                    }
+                }
+            }else {
+                $requete = "SELECT * FROM jouer WHERE pseudo = :pseudo";
+                $stmt = $c->prepare($requete);
+
+                $stmt->bindParam(":pseudo", $_SESSION['pseudo']);
+                $stmt->execute();
+
+                // récupération du résultat dans un tableau associatif
+                $tabRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                // Si vous voulez mieux comprendre la structure de données retournée :
+                //var_dump($tabRes);
+
+                foreach($tabRes as $uneLigne)
+                {
+                    $requete = "SELECT * FROM partie WHERE idPartie = :idPartie";
+                    $stmt = $c->prepare($requete);
+
+                    $stmt->bindParam(":idPartie", $uneLigne['idPartie']);
+                    $stmt->execute();
+
+                    // récupération du résultat dans un tableau associatif
+                    $resultat = $stmt->fetch();
+
+                    $i = $uneLigne['idPartie'];
+                    if($resultat['etat'] == 1) {
+                        echo "<img src=\"img/partie.png\" alt=\"Logo partie\" class=\"petite_image\">".$uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie($i)\">Rejoindre Partie</a> <span style=\"color: #842029;\">(Partie En Cours)</span><br>"; 
+                    }else if($resultat['etat'] == 2) {
+                        echo "<img src=\"img/partie.png\" alt=\"Logo partie\" class=\"petite_image\">".$uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie($i)\">Rejoindre Partie</a> <span style=\"color: #842029;\">(Partie En attente) </span><br>"; 
+                    }
+                }
             }
+            
         ?>
 	
 		
