@@ -21,3 +21,10 @@ if(!empty($tab)){
     $stmt->bindParam(":numJoueur",$num);
     $stmt->execute();
 }
+
+$requete = "UPDATE partie SET etat=:etat WHERE idPartie=:idPartie";
+$stmt = $c->prepare($requete);
+$etat = 1;
+$stmt->bindParam(":etat",$etat);
+$stmt->bindParam(":idPartie",$_POST['id']);
+$stmt->execute();
