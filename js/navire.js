@@ -1,10 +1,20 @@
-$(document).ready(function() {
-    var temps = 2000;
+// $(document).ready(function() {
+//     var temps = 5000;
 
-     setTimeout(() => {
-        location.reload();
-    }, temps); 
-})
+//     setTimeout(() => {
+//         getPartie();
+//         console.log("coincoin");
+//     }, temps); 
+// })
+
+setInterval(function(){
+    getPartie();
+    $.ajax({
+        url:"dessinerGrille.php",
+        success:()=>{console.log("dessin ok");}
+    });
+    //console.log("coincoin");
+},5000);
 
 function creerPartie() {
     $.ajax({
@@ -48,12 +58,7 @@ function getPartie() {
     $.get("./getGrille.php", creerNavire);
 }
 
-function tour(data){
-    console.log("tour du joueur "+data);
-}
-function getTour(){
-    $.get("./getTour.php",tour);
-}
+
     
 function traiterPartie(data) {
 
