@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // $(document).ready(function() {
 //     var temps = 5000;
 
@@ -16,28 +15,6 @@ setInterval(function(){
     });
     //console.log("coincoin");
 },5000);
-=======
-setInterval(function() {
-    getPartie();
-    $.ajax({
-        url:"dessinerGrille.php",
-        success: function(){
-            console.log("Partie redessiné");
-        },
-        error: function(xhr ,status, error){
-            console.log("création échouée: "+error);
-        }
-    });
-},1000);
-
-$(document).ready(function() {
-    var temps = 2000;
-
-    /* setTimeout(() => {
-        location.reload();
-    }, temps); */
-})
->>>>>>> 8dee9226c3401de0c850de1ecf7d82e19e2e60f1
 
 function creerPartie() {
     $.ajax({

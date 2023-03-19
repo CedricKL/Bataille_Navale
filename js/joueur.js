@@ -8,7 +8,6 @@ function gererClick(id,numj) {
       $("#e"+id).css("background-size", "contain");
       $("#e"+id).css("background-repeat", "no-repeat");
 
-<<<<<<< HEAD
       $.ajax({
         url:"enregistrerGrille.php",
         type:"POST",
@@ -41,26 +40,6 @@ function getTour(){
 
 
 function rejoindrePartie() {
-=======
-   //  $("#j"+id).html("<img src=\"img/feu.gif\" alt=\"feu\" width=\"15\" height=\"15\">");
-   $("#e"+id).css("background-image", "url(\"img/feu.gif\")");
-   $("#e"+id).css("background-size", "contain");
-   $("#e"+id).css("background-repeat", "no-repeat");
-
-   $.ajax({
-    url:"enregistrerGrille.php",
-    type:"POST",
-    data: {"id": id}
-  }).done(function() {
-    console.log("Reussi");
-    // location.reload();
-    getTirs();
-  });
-}
-
-function rejoindrePartie(id) {
-  console.log(id);
->>>>>>> 8dee9226c3401de0c850de1ecf7d82e19e2e60f1
   $.ajax({
     url:"rejoindrePartie.php",
     type:"POST",
@@ -100,19 +79,10 @@ function getTirs() {
         
         for(let i=0;i<=keys.length;i++){
 
-<<<<<<< HEAD
           if(values[i] == 2){
           $("#e"+keys[i]).css("background-color","grey");
           $("#e"+keys[i]).css("background-image", "none");
           }
-=======
-          if(values[i] == 2) {
-            $("#e"+keys[i]).css("background-color","grey");
-            $("#e"+keys[i]).css("background-image", "none");
-          }
-          
-  
->>>>>>> 8dee9226c3401de0c850de1ecf7d82e19e2e60f1
           if(values[i] == 3) {
             $("#e"+keys[i]).css("background-image", "url(\"img/feu.gif\")");
             $("#e"+keys[i]).css("background-size", "contain");
