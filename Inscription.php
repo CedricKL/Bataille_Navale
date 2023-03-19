@@ -40,7 +40,7 @@ if(isset($_POST['formInscription']))
                     $inserttmbr=$c->prepare("INSERT INTO joueur(pseudo,mail,mdp,nom,prenom) VALUES (?,?,?,?,?)");
                     if($inserttmbr->execute(array($pseudo, $mail, $mdp,$nom,$prenom))){
                         $erreur= "Votre compte a bien été cree";  
-                        $_SESSION['pseudo'] = $pseudo;
+                        // $_SESSION['pseudo'] = $pseudo;
                         header('Location:index.php?page=PageConnexion.php');
                     };
                 }
@@ -51,7 +51,7 @@ if(isset($_POST['formInscription']))
               }
               else
               {
-                $errreur="Adresse mail déja utilisé";
+                $erreur="Adresse mail déja utilisé";
 
 
                 
