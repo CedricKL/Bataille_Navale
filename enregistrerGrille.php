@@ -24,6 +24,7 @@
         $tour = 2;
         $partie = $_SESSION['id_partie'];
         // 1 - demarré 2- En Attente 0-Pas encore commence
+        // 1 - En cours 2 - Terminée
 
         $g2Json = json_encode($newGrilleJ2);
         $stmt->bindParam(":grilleJ2",$g2Json);
