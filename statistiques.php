@@ -98,7 +98,7 @@ $tabRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 							} else if ($tabRes2['etat'] == 3 && $joueur['score'] < $enemi['score']) {
 								echo "	<td> Défaite </td>";
 							} else if ($tabRes2['etat'] == 3 && $joueur['score'] == $enemi['score']) {
-								echo " Nul ";
+								echo "	<td> Nul </td>";
 							}
 							echo "</tr>";
 						}

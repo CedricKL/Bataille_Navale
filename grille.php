@@ -80,8 +80,8 @@
         </div>
     </header>
 
-    <div>
-
+    <div id="affiche">
+        <h1><span id="victoire"></span></h1>
     </div>
     <div class="game">
         <?php include "dessinerGrille.php";?>

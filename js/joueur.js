@@ -1,9 +1,18 @@
 function gererClick(id,numj) {
-    // console.log("la case a été cliquée"+ e.id);
-    //console.log($(this));
     console.log(id);
+    $.ajax({
+      url:"finPartie.php",
+      success:(data)=>{
+        console.log(data);
+        let victoire = data.split(',');
+        if(tourj == 0){
+          alert("vainqueur:Player"+victoire[0]);
+          $("#victoire").html("vainqueur:Player"+victoire[0]+"!!");
+        }
+        console.log("tour du joueur: "+tourj);
+      }
+    });
     if(tourj == numj){
-         //  $("#j"+id).html("<img src=\"img/feu.gif\" alt=\"feu\" width=\"15\" height=\"15\">");
       $("#e"+id).css("background-image", "url(\"img/feu.gif\")");
       $("#e"+id).css("background-size", "contain");
       $("#e"+id).css("background-repeat", "no-repeat");
@@ -40,12 +49,6 @@ function gererClick(id,numj) {
 }
 
 setInterval(function(){
-  $.ajax({
-    url:"finPartie.php",
-    success:()=>{
-      console.log("tour du joueur: "+tourj);
-    }
-  });
   getTour();
 },1000);
 
@@ -77,13 +80,12 @@ function rejoindrePartie(id) {
             $("#j"+keys[i]).css("background-color","grey");
           }
       }
-        location.reload();
-       // window.location.href = "grille.php?partie="+data;
-    },
+          },
     error: function(xhr ,status, error){
         console.log("création échouée: "+error);
     }
 });
+location.reload();
 }
 
 function getTirs() {

@@ -16,6 +16,9 @@
 ?>
 
 <article id="joueurs">
+    <div>
+		<span style="color:  #842029;"><i class="fa fa-user"></i><u><strong> Tableau des joueurs </strong></u></span>
+	</div>
     <table class="table table-striped">
         <thead>
             <tr>

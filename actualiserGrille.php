@@ -1,6 +1,6 @@
 <?php
 session_start();
-//session_start();
+
 include('./connexion.php');
 
 // get positions navires
@@ -13,7 +13,7 @@ $stmt->execute();
 
 // récupération du résultat dans un tableau associatif
 $tabRes = $stmt->fetch();
-// Si vous voulez mieux comprendre la structure de données retournée :
+
 $_SESSION['tour'] = $tabRes['tour'];
 
 if($_SESSION['numJoueur'] == 1) {
