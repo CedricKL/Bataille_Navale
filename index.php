@@ -23,7 +23,7 @@
 		include('static/header.php'); 
 		include('static/menu.php');
 		if(!isset($_SESSION['pseudo'])) {
-			$nomPage = "Pageconnexion.php";
+			$nomPage = "PageConnexion.php";
 			//header("Location: index.php?page=Pageconnexion.php");
 		}
 		
@@ -35,7 +35,7 @@
 					$nomPage = "Inscription.php";
 				}
 			}else {
-				$nomPage = 'Pageconnexion.php';
+				$nomPage = 'PageConnexion.php';
 			}
 			
 			if(isset($_SESSION['pseudo'])) {

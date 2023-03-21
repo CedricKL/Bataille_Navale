@@ -77,7 +77,7 @@ function rejoindrePartie(id) {
             $("#j"+keys[i]).css("background-color","grey");
           }
       }
-        // location.reload();
+        location.reload();
        // window.location.href = "grille.php?partie="+data;
     },
     error: function(xhr ,status, error){

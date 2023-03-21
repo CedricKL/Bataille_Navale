@@ -51,6 +51,21 @@
                 // Si vous voulez mieux comprendre la structure de données retournée :
                 //var_dump($tabRes);
 
+                $requete = "SELECT * FROM partie WHERE etat= 2";
+                $stmt = $c->prepare($requete);
+                $stmt->execute();
+
+                // récupération du résultat dans un tableau associatif
+                $tabRes2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach($tabRes2 as $uneLigne)
+                {
+                // récupération du résultat dans un tableau associatif
+                $i = $uneLigne['idPartie'];
+                echo "<img src=\"img/partie.png\" alt=\"Logo partie\" class=\"petite_image\">" . $uneLigne['idPartie'] . ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie($i)\">Rejoindre Partie</a> <span style=\"color: #842029;\">(Partie En attente) </span><br>"; 
+
+                }
+
                 foreach($tabRes as $uneLigne)
                 {
                     $requete = "SELECT * FROM partie WHERE idPartie = :idPartie";
@@ -65,8 +80,6 @@
                     $i = $uneLigne['idPartie'];
                     if($resultat['etat'] == 1) {
                         echo "<img src=\"img/partie.png\" alt=\"Logo partie\" class=\"petite_image\">".$uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie($i)\">Rejoindre Partie</a> <span style=\"color: #842029;\">(Partie En Cours)</span><br>"; 
-                    }else if($resultat['etat'] == 2) {
-                        echo "<img src=\"img/partie.png\" alt=\"Logo partie\" class=\"petite_image\">".$uneLigne['idPartie']. ": <a href='grille.php?partie=$i' onClick=\"rejoindrePartie($i)\">Rejoindre Partie</a> <span style=\"color: #842029;\">(Partie En attente) </span><br>"; 
                     }
                 }
             }
