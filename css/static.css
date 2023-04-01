@@ -11,17 +11,33 @@ body {
 
 #entete{
     background-color: rgb(30, 92, 153);
-    text-align: center;
-    padding-top: 2em;
+    /* text-align: center; */
+    padding: 2em;
+    width: 100%; 
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;  
     margin-bottom: 2em;
-    padding-bottom: 2em;  
+}
+
+#entete .logo{
+    background: white; 
+    border-radius: 32px; 
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+#entete .logo:hover{
+    background: orange; 
+    transform: scale(1.1);
 }
 
 #entete h1{
     color: white;
     font-family: 'Georgia, serif';
     font-size: 300%;
-    margin-right: 10em;
+    /* margin-right: 10em; */
 }
 
 #entete h2{
@@ -29,7 +45,14 @@ body {
     font-family: 'Georgia, serif';
     text-align: right;
     font-size: 150%;
-    margin-right: 5em;
+}
+
+#entete .connect{
+    width: auto;  
+    display: flex; 
+    flex-direction: column; 
+    justify-content: start; 
+    align-items: start;
 }
 
 
@@ -178,25 +201,31 @@ body {
 
 
 #footer {
+    position: absolute;
+    bottom: 0em;
+    width: 100%;
     background-color: rgb(30, 92, 153);
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    clear: both;
+    justify-content: space-between;
+    /* clear: both; */
     border-radius: 0em;
-    position: relative;
     font-family: 'Georgia, serif';
-    padding: 0em;
-    padding-bottom: 0em;
-    padding-right:0em;
-    padding-left:0em;
+    padding: 0.5em;
     flex-wrap: wrap;
 }
 
-#footer a {
+#footer .logo{
+    background: white; 
+    border-radius: 5px; 
+    padding: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+#footer a, footer span {
 
      color: rgb(255, 197, 40);
-     font-size: 100%
+     font-size: 130%
 }
 
 #footer a:hover {

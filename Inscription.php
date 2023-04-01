@@ -96,39 +96,39 @@ if(isset($_POST['formInscription']))
 </head>
 <body>
 
-<div style="margin-left:30%;" align="center">
+<div style="min-width: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
    <h2 style="color: rgb(255, 197, 40);">Inscription</h2> 
    <br/><br />
-   <form method="POST" action="">
-      <div class="mb-3">
-          <label for="pseudo" class="form-label">Pseudo</label>
+   <form method="POST" action="" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div class="mb-3" style="width: 100%">
+          <label for="pseudo" class="form-label" style="color: white; font-weight: 500;">Pseudo</label>
           <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)){echo $pseudo;} ?>">
       </div>
-      <div class="mb-3">
-          <label for="nom" class="form-label">Nom</label>
+      <div class="mb-3" style="width: 100%">
+          <label for="nom" class="form-label" style="color: white; font-weight: 500;">Nom</label>
           <input type="text" class="form-control" placeholder="Votre nom" id="nom" name="nom"  value="<?php if(isset($nom)){echo $nom;} ?>" />    
       </div>
-      <div class="mb-3">
-          <label for="prenom" class="form-label">Prenom</label>
+      <div class="mb-3" style="width: 100%">
+          <label for="prenom" class="form-label" style="color: white; font-weight: 500;">Prenom</label>
           <input type="text" class="form-control" placeholder="Votre prenom" id="prenom" name="prenom"  value="<?php if(isset($prenom)){echo $prenom;} ?>" />    
       </div>
-      <div class="mb-3">
-          <label for="mail" class="form-label">Mail</label>
+      <div class="mb-3" style="width: 100%">
+          <label for="mail" class="form-label" style="color: white; font-weight: 500;">Mail</label>
           <input type="email" class="form-control" placeholder="Votre mail" id="mail" name="mail"  value="<?php if(isset($mail)){echo $mail;} ?>" />    
       </div>
-      <div class="mb-3">
-          <label for="mail2" class="form-label">Confirmation du mail :</label>
+      <div class="mb-3" style="width: 100%">
+          <label for="mail2" class="form-label" style="color: white; font-weight: 500;">Confirmation du mail :</label>
           <input type="email" class="form-control" placeholder="Votre mail" id="mail2" name="mail2"  value="<?php if(isset($mail2)){echo $mail2;} ?>" />    
       </div>
-      <div class="mb-3">
-          <label for="mdp" class="form-label">Mot de passe</label>
+      <div class="mb-3" style="width: 100%">
+          <label for="mdp" class="form-label" style="color: white; font-weight: 500;">Mot de passe</label>
           <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Votre mot de passe">
       </div>
-      <div class="mb-3">
-          <label for="mdp2" class="form-label">Confirmation du mot de passe</label>
+      <div class="mb-3" style="width: 100%">
+          <label for="mdp2" class="form-label" style="color: white; font-weight: 500;">Confirmation du mot de passe</label>
           <input type="password" class="form-control" name="mdp2" id="mdp2" placeholder="Confirmez Votre mot de passe">
       </div>
-      <button type="submit" name="formInscription" class="btn btn-primary"> Je m'inscris </button>
+      <button type="submit" name="formInscription" class="btn btn-warning"> Je m'inscris </button>
    </form>
    <!--<form method="POST" action="">
 
