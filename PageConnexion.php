@@ -46,24 +46,24 @@ if (isset($_POST['formconnexion'])) {
 </head>
 
 <body>
-    <div style="margin-left:30%;" align="center">
+    <div style="min-width: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <h2 style="color: rgb(255, 197, 40);">Connexion</h2>
         <br /><br />
-        <form method="POST" action="">
-            <div class="mb-3">
-                <label for="mailconnect" class="form-label">Adresse Email</label>
+        <form method="POST" action="" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;" >
+            <div class="mb-3" style="width: 100%">
+                <label for="mailconnect" class="form-label" style="color: white; font-weight: 500;">Adresse Email</label>
                 <input type="email" class="form-control" id="mailconnect" name="mailconnect" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="emailHelp" class="form-text" style="color: wheat; font-weight: 500;">We'll never share your email with anyone else.</div>
             </div>
-            <div class="mb-3">
-                <label for="mdpconnect" class="form-label">Mot de passe</label>
+            <div class="mb-3" style="width: 100%">
+                <label for="mdpconnect" class="form-label" style="color: white; font-weight: 500;">Mot de passe</label>
                 <input type="password" class="form-control" name="mdpconnect" id="mdpconnect">
             </div>
-            <div class="mb-3 form-check">
+            <div class="mb-3 form-check" style="width: 100%">
                 <input type="checkbox" class="form-check-input" id="check">
-                <label class="form-check-label" for="check">Check me out</label>
+                <label class="form-check-label" for="check" style="color: white; font-weight: 500;">Check me out</label>
             </div>
-            <button type="submit" name="formconnexion" class="btn btn-primary">Se connecter</button>
+            <button type="submit" name="formconnexion" class="btn btn-warning">Se connecter</button>
         </form>
 
        <!-- <form method="POST" action="">

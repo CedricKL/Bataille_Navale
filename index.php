@@ -17,7 +17,7 @@
 		
 </head>
 
-<body>
+<body style="width: 100%; height: auto; font-family: Roboto;">
 	<?php 
 		
 		include('static/header.php'); 

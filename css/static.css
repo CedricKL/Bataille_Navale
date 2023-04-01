@@ -11,17 +11,33 @@ body {
 
 #entete{
     background-color: rgb(30, 92, 153);
-    text-align: center;
-    padding-top: 2em;
+    /* text-align: center; */
+    padding: 2em;
+    width: 100%; 
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;  
     margin-bottom: 2em;
-    padding-bottom: 2em;  
+}
+
+#entete .logo{
+    background: white; 
+    border-radius: 32px; 
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+#entete .logo:hover{
+    background: orange; 
+    transform: scale(1.1);
 }
 
 #entete h1{
     color: white;
     font-family: 'Georgia, serif';
     font-size: 300%;
-    margin-right: 10em;
+    /* margin-right: 10em; */
 }
 
 #entete h2{
@@ -29,7 +45,14 @@ body {
     font-family: 'Georgia, serif';
     text-align: right;
     font-size: 150%;
-    margin-right: 5em;
+}
+
+#entete .connect{
+    width: auto;  
+    display: flex; 
+    flex-direction: column; 
+    justify-content: start; 
+    align-items: start;
 }
 
 
@@ -55,14 +78,21 @@ body {
     font-size: 110%;
     color: rgb(255, 255, 255);
     font-family: 'Georgia, serif'; 
-    
-    
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
 }
 
 
 #menu a:visited{ /* Change la couleur quand on a deja cliqué dessus*/
     color: rgb(255, 197, 40);
     text-decoration: none;
+}
+
+#menu a:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    font-weight: 500;
+    color: rgb(255, 197, 40);
 }
 
 /* Petit carré sur le coté. Tout moche 
@@ -77,13 +107,14 @@ body {
 
 #contenu{
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    bottom: 5em;
+    top: 13em;
+    justify-content: center; 
+    align-items: center;
     flex-wrap: wrap;
-    width: 98%;
     background-color: rgb(30, 92, 153);
-    padding-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
     padding: 1em;
     margin-left: 0em;
     margin-bottom: 3em;
@@ -98,7 +129,7 @@ body {
 #acceuil{
     width: 80%;
     background-color: rgb(237, 223, 194);
-    padding-right: 1em;
+    padding: 3em;
     line-height: 2em;
     text-align: center;
     justify-content: center;
@@ -108,7 +139,7 @@ body {
 #regles1{
     width: 80%;
     background-color: rgb(237, 223, 194);
-    padding-right: 1em;
+    padding: 3em;
     line-height: 2em;
     text-align: center;
     justify-content: center;
@@ -119,7 +150,7 @@ body {
 #jouer1{
     width: 80%;
     background-color: rgb(237, 223, 194);
-    padding-right: 1em;
+    padding: 3em;
     line-height: 2em;
     text-align: center;
     justify-content: center;
@@ -153,7 +184,7 @@ body {
 #statistiques1 {
     width: 80%;
     background-color: rgb(237, 223, 194);
-    padding-right: 1em;
+    padding: 2em;
     line-height: 2em;
     text-align: center;
     justify-content: center;
@@ -163,7 +194,7 @@ body {
 #joueurs {
     width: 80%;
     background-color: rgb(237, 223, 194);
-    padding-right: 1em;
+    padding: 2em;
     line-height: 2em;
     text-align: center;
     justify-content: center;
@@ -178,29 +209,39 @@ body {
 
 
 #footer {
+    position: absolute;
+    bottom: 0em;
+    width: 100%;
     background-color: rgb(30, 92, 153);
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    clear: both;
-    border-radius: 0em;
-    position: relative;
+    justify-content: space-between;
+    /* clear: both; */
     font-family: 'Georgia, serif';
-    padding: 0em;
-    padding-bottom: 0em;
-    padding-right:0em;
-    padding-left:0em;
+    padding: 0.5em;
     flex-wrap: wrap;
 }
 
-#footer a {
+#footer .logo{
+    background: white; 
+    border-radius: 5px; 
+    padding: 10px;
+
+}
+
+#footer a, footer span {
 
      color: rgb(255, 197, 40);
-     font-size: 100%
+     font-size: 130%;
+     text-decoration: none;
+     transition: 0.3s ease-in-out;
 }
 
 #footer a:hover {
-    color: rgb(40, 222, 255);
+    color: rgb(225, 222, 225);
+    cursor: pointer;
+    transform: scale(1.1);
+    font-weight: 500;
 
 }
 
