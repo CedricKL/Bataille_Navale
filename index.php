@@ -28,7 +28,7 @@
 		}
 		
 	?>
-	<div id="contenu">
+	<div id="contenu" style="width: 100%; display: flex; justify-content: center; align-items: center;">
 		<?php //permet d'inclure plus facilement tout notre php
 			if(isset($_GET['page'])) {
 				if($_GET['page'] == "Inscription.php")  {
